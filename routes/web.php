@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\employeeController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -32,6 +33,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/products/delete/{id}', [ProductController::class, 'delete'])->name('admin/products/delete');
 
     Route::get('/admin/inventory', [InventoryController::class, 'index'])->name('admin/inventory');
+    Route::get('/admin/employee', [employeeController::class, 'index'])->name('admin/employee');
+    // Route::resource('/admin/employee', 'employeeController');
 });
 
 require __DIR__.'/auth.php';
